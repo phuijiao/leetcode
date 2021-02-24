@@ -1,5 +1,5 @@
 // 有n块宽度为1，高度为height[]的木板依次并排排列，在多块木板的凹处会有积水区域，求最大积水量区域及积水量
-package leetcode.editor.cn;
+package Demo;
 
 /** @Author jiaopenghui @Date 2020/12/29 3:42 下午 */
 public class ShortBoard {
