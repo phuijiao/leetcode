@@ -63,9 +63,11 @@ class BaoHanMinhanShuDeZhanLcof {
     }
 
     public void pop() {
-      Integer pop = stack.pop();
-      if (pop.equals(minStack.peek())) {
-        minStack.pop();
+      if (!stack.isEmpty()) {
+        Integer pop = stack.pop();
+        if (pop.equals(minStack.peek())) {
+          minStack.pop();
+        }
       }
     }
 

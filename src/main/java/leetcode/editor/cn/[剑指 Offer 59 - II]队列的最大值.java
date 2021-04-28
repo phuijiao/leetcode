@@ -54,7 +54,7 @@ class DuiLieDeZuiDaZhiLcof {
     }
 
     public int max_value() {
-      return max.isEmpty() ? -1 : max.peek();
+      return max.isEmpty() ? -1 : max.peekFirst();
     }
 
     public void push_back(int value) {

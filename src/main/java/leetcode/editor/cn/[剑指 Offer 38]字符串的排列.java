@@ -56,10 +56,9 @@ class ZiFuChuanDePaiLieLcof {
       }
       HashSet<Character> set = new HashSet<>();
       for (int i = x; i < this.chars.length; i++) {
-        if (set.contains(chars[i])) {
+        if (!set.add(chars[i])) {
           continue;
         }
-        set.add(chars[i]);
         swap(x, i);
         dfs(x + 1);
         swap(x, i);
