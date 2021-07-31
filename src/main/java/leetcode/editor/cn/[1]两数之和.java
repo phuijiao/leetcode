@@ -61,7 +61,9 @@ class TwoSum{
   private static
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
+
+    //暴力遍历
+    public int[] twoSum1(int[] nums, int target) {
       int len = nums.length;
       for (int i = 0; i < len; i++) {
         for (int j = i + 1; j < len; j++) {
@@ -69,6 +71,20 @@ class Solution {
             return new int[] {i, j};
           }
         }
+      }
+      return new int[0];
+    }
+
+
+    //哈希表
+    public int[] twoSum(int[] nums, int target) {
+      HashMap<Integer, Integer> map = new HashMap<>();
+      for (int i = 0; i < nums.length; i++) {
+        Integer ind = map.get(target - nums[i]);
+        if (ind != null) {
+          return new int[] {ind, i};
+        }
+        map.put(nums[i], i);
       }
       return new int[0];
     }
