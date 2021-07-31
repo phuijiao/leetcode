@@ -69,129 +69,17 @@ class XuLieHuaErChaShuLcof {
    */
   public class Codec {
 
-    // Encodes a tree to a single string.zhe
-    public String serialize1(TreeNode root) {
-      if (root == null) {
-        return "[]";
-      }
-      Queue<TreeNode> oddQueue = new LinkedList<>();
-      Queue<TreeNode> evenQueue = new LinkedList<>();
-      ArrayList<Integer> list = new ArrayList<>();
-      oddQueue.add(root);
-      while (true) {
-        if (!allNull(oddQueue)) {
-          boolean flag = false; // 已加入非null元素
-          while (!oddQueue.isEmpty()) {
-            TreeNode node = oddQueue.remove();
-            if (node == null) {
-              //              if (flag) {
-              list.add(null);
-              //              }
-              //              evenQueue.add(null);
-              //              evenQueue.add(null);
-            } else {
-              flag = true;
-              list.add(node.val);
-              evenQueue.add(node.left);
-              evenQueue.add(node.right);
-            }
-          }
-        } else {
-          break;
-        }
-
-        if (!allNull(evenQueue)) {
-          boolean flag = false;
-          while (!evenQueue.isEmpty()) {
-            TreeNode node = evenQueue.remove();
-            if (node == null) {
-              //              if (flag) {
-              list.add(null);
-              //              }
-              //              oddQueue.add(null);
-              //              oddQueue.add(null);
-            } else {
-              flag = true;
-              list.add(node.val);
-              oddQueue.add(node.left);
-              oddQueue.add(node.right);
-            }
-          }
-        } else {
-          break;
-        }
-      }
-      for (int i = list.size() - 1; i >= 0; i--) {
-        if (list.get(i) == null) {
-          list.remove(i);
-        } else {
-          break;
-        }
-      }
-
-      String s = list.toString();
-      return s;
-    }
-
-    private boolean allNull(Queue<TreeNode> queue) {
-      LinkedList<TreeNode> list = (LinkedList<TreeNode>) queue;
-      for (TreeNode node : list) {
-        if (node != null) {
-          return false;
-        }
-      }
-      return true;
-    }
-    // Decodes your encoded data to tree.
-    public TreeNode deserialize1(String data) {
-      if (data == null || data.length() < 3) {
-        return null;
-      }
-      String[] val = data.substring(1, data.length() - 1).split(",");
-      int length = val.length;
-      TreeNode root = new TreeNode(Integer.parseInt(val[0].trim()));
-      Queue<TreeNode> queue = new LinkedList<>();
-      queue.add(root);
-      int index = 1;
-      while (!queue.isEmpty()) {
-        TreeNode fa = queue.remove();
-        if (index >= length) {
-          return root;
-        }
-        if (!"null".equals(val[index].trim())) {
-          TreeNode node = new TreeNode(Integer.parseInt(val[index].trim()));
-          fa.left = node;
-          queue.add(node);
-        }
-        index++;
-        if (index >= length) {
-          return root;
-        }
-        if (!"null".equals(val[index].trim())) {
-          TreeNode node = new TreeNode(Integer.parseInt(val[index].trim()));
-          fa.right = node;
-          queue.add(node);
-        }
-        index++;
-      }
-      return root;
-    }
-
     public String serialize(TreeNode root) {
       if (root == null) {
         return "[]";
       }
       StringBuilder res = new StringBuilder("[");
-      Queue<TreeNode> queue =
-          new LinkedList<TreeNode>() {
-            {
-              add(root);
-            }
-          };
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
       while (!queue.isEmpty()) {
         TreeNode node = queue.poll();
         if (node != null) {
-          res.append(node.val + ",");
+          res.append(node.val).append(",");
           queue.add(node.left);
           queue.add(node.right);
         } else {
@@ -204,17 +92,13 @@ class XuLieHuaErChaShuLcof {
     }
 
     public TreeNode deserialize(String data) {
-      if (data.equals("[]")) {
+      if (data == null || !data.startsWith("[") || !data.endsWith("]") || data.length() == 2) {
         return null;
       }
       String[] vals = data.substring(1, data.length() - 1).split(",");
       TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
-      Queue<TreeNode> queue =
-          new LinkedList<TreeNode>() {
-            {
-              add(root);
-            }
-          };
+      Queue<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
       int i = 1;
       while (!queue.isEmpty()) {
         TreeNode node = queue.poll();

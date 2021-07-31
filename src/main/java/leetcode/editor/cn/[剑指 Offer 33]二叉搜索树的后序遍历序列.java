@@ -30,6 +30,9 @@
 // 👍 151 👎 0
 
 package leetcode.editor.cn; // 如果你的算法题是中文的，后缀就是cn，如果是英文的就是en
+
+import java.util.LinkedList;
+
 /**
  * @author phuijiao
  * @date 2020-12-12 19:45:03
@@ -43,7 +46,7 @@ class ErChaSouSuoShuDeHouXuBianLiXuLieLcof {
   private static
   // leetcode submit region begin(Prohibit modification and deletion)
   class Solution {
-    public boolean verifyPostorder(int[] postorder) {
+    public boolean verifyPostorder1(int[] postorder) {
       if (postorder.length <= 2) {
         return true;
       }
@@ -70,6 +73,22 @@ class ErChaSouSuoShuDeHouXuBianLiXuLieLcof {
 
       return verifyPostorder(postorder, start, left)
           && verifyPostorder(postorder, left + 1, end - 1);
+    }
+
+    //辅助单调栈
+    public boolean verifyPostorder(int[] postorder) {
+      LinkedList<Integer> stack = new LinkedList<>();
+      int root = Integer.MAX_VALUE;
+      for (int i = postorder.length - 1; i >= 0; i--) {
+        if (postorder[i] > root) {
+          return false;
+        }
+        while (!stack.isEmpty() && stack.peek() > postorder[i]) {
+          root = stack.pop();
+        }
+        stack.push(postorder[i]);
+      }
+      return true;
     }
   }
   // leetcode submit region end(Prohibit modification and deletion)

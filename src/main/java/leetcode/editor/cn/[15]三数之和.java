@@ -1,3 +1,4 @@
+
 //给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？请你找出所有和为 0 且不重
 //复的三元组。 
 //
@@ -104,7 +105,7 @@ class Solution {
         int target = -nums[i];
         while (left < right) {
           if (nums[left] + nums[right] == target) {
-            res.add(new ArrayList<>(Arrays.asList(nums[i], nums[left], nums[right])));
+            res.add(Arrays.asList(nums[i], nums[left], nums[right]));
             left++;
             right--;
             while (left < right && nums[left] == nums[left - 1]) {

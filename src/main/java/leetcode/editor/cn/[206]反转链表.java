@@ -35,8 +35,9 @@ class ReverseLinkedList{
   //leetcode submit region begin(Prohibit modification and deletion)
 
 class Solution {
-    ListNode pre = null, cur = null;
-    public ListNode reverseList(ListNode head) {
+
+    public ListNode reverseList1(ListNode head) {
+      ListNode pre = null, cur = null;
       while (head != null) {
         cur = head;
         head = head.next;
@@ -44,6 +45,18 @@ class Solution {
         pre = cur;
       }
       return pre;
+    }
+
+    ListNode pre = null;
+    public ListNode reverseList(ListNode head) {
+      if (head == null) {
+        return pre;
+      }
+      ListNode cur = head;
+      head = head.next;
+      cur.next = pre;
+      pre = cur;
+      return reverseList(head);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

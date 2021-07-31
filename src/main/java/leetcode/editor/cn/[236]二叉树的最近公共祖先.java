@@ -73,7 +73,7 @@ class Solution {
     }
 
     private boolean dfs(TreeNode root, TreeNode p, TreeNode q) {
-      if (root == null) {
+      if (root == null || ans != null) {
         return false;
       }
       boolean lson = dfs(root.left, p, q);

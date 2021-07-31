@@ -1,3 +1,4 @@
+
 //给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。请你反转从位置 left 到位置 right 的链
 //表节点，返回 反转后的链表 。
 // 
@@ -59,7 +60,7 @@ class ReverseLinkedListIi{
   //leetcode submit region begin(Prohibit modification and deletion)
 
 class Solution {
-    public ListNode reverseBetween(ListNode head, int left, int right) {
+    public ListNode reverseBetween1(ListNode head, int left, int right) {
       int i = 1;
       ListNode thead = head;
       ListNode preEnd = null, midEnd = null, postStart = null;
@@ -92,7 +93,29 @@ class Solution {
       }
       return head;
     }
-}
+
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+      ListNode root = new ListNode();
+      root.next = head;
+      head = root;
+      for (int i = 1; i < left; i++) {
+        head = head.next;
+      }
+      ListNode cur = head.next, pre = null, tmp;
+      ListNode after = cur;
+      for (int i = 0; i <= right - left; i++) {
+        tmp = cur;
+        cur = cur.next;
+        tmp.next = pre;
+        pre = tmp;
+      }
+      head.next = pre;
+      after.next = cur;
+
+      return root.next;
+    }
+
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

@@ -52,18 +52,31 @@ class ConstructBinaryTreeFromPreorderAndInorderTraversal{
   //leetcode submit region begin(Prohibit modification and deletion)
 
 class Solution {
-    HashMap<Integer, Integer> map;
-//    public TreeNode buildTree(int[] preorder, int[] inorder) {
-//      if (inorder == null || inorder.length == 0) {
-//        return null;
-//      }
-//      map = new HashMap<>();
-//      int len = inorder.length;
-//      for (int i = 0; i < len; i++) {
-//
-//      }
-//    }
-}
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+      if (inorder == null || inorder.length == 0) {
+        return null;
+      }
+      HashMap<Integer, Integer> map = new HashMap<>();
+      int len = inorder.length;
+      for (int i = 0; i < len; i++) {
+        map.put(inorder[i], i);
+      }
+      return build(preorder, 0, len - 1, inorder, 0, len - 1, map);
+    }
+
+    private TreeNode build(int[] preorder, int ps, int pe, int[] inorder, int is, int ie, HashMap<Integer, Integer> map) {
+      if (ps > pe) {
+        return null;
+      }
+
+      TreeNode root = new TreeNode(preorder[ps]);
+      Integer ind = map.get(preorder[ps]);
+
+      root.left = build(preorder,ps + 1, ps + ind - is, inorder, is, ind - 1, map);
+      root.right = build(preorder, pe - ie + ind + 1, pe, inorder, ind + 1, ie, map);
+      return root;
+    }
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

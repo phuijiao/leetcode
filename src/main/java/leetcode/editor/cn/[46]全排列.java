@@ -18,11 +18,7 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
-import static com.sun.tools.javac.jvm.ByteCodes.swap;
 
 /**
  * @author  phuijiao

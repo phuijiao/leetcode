@@ -52,8 +52,8 @@ class BaShuZuPaiChengZuiXiaoDeShuLcof {
       StringBuilder builder = new StringBuilder();
       Arrays.stream(nums)
           .mapToObj(String::valueOf)
-          .sorted((e1, e2) -> Long.parseLong(e1 + e2) > Long.parseLong(e2 + e1) ? 1 : -1)
-          .forEach(e -> builder.append(e));
+          .sorted((a, b) -> (a + b).compareTo(b + a))
+          .forEach(builder::append);
       return builder.toString();
     }
   }

@@ -17,6 +17,7 @@
 
 package leetcode.editor.cn; // 如果你的算法题是中文的，后缀就是cn，如果是英文的就是en
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -49,7 +50,7 @@ class CongWeiDaoTouDaYinLianBiaoLcof {
       if (head == null) {
         return new int[0];
       }
-      Stack<Integer> stack = new Stack<>();
+      LinkedList<Integer> stack = new LinkedList<>();
       ListNode tmp = head;
       while (tmp != null) {
         stack.push(tmp.val);

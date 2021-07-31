@@ -41,6 +41,7 @@
 
 package leetcode.editor.cn;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -57,12 +58,12 @@ class MinStack1{
   private static
   //leetcode submit region begin(Prohibit modification and deletion)
 class MinStack {
-    Stack<Integer> stack;
-    Stack<Integer> minStack;
+    LinkedList<Integer> stack;
+    LinkedList<Integer> minStack;
     /** initialize your data structure here. */
     public MinStack() {
-      stack = new Stack<>();
-      minStack = new Stack<>();
+      stack = new LinkedList<>();
+      minStack = new LinkedList<>();
     }
     
     public void push(int val) {

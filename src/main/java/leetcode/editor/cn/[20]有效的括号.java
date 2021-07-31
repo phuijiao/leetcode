@@ -58,6 +58,7 @@ package leetcode.editor.cn;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -76,7 +77,7 @@ class ValidParentheses{
 class Solution {
     public boolean isValid(String s) {
       int len = s.length();
-      Stack<Character> stack = new Stack<>();
+      LinkedList<Character> stack = new LinkedList<>();
       for (int i = 0; i < len; i++) {
         char c = s.charAt(i);
         if (c == '(') {

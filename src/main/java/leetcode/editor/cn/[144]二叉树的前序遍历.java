@@ -55,6 +55,7 @@
 package leetcode.editor.cn;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -93,7 +94,7 @@ class Solution {
       if (root == null) {
         return res;
       }
-      Stack<TreeNode> stack = new Stack<>();
+      LinkedList<TreeNode> stack = new LinkedList<>();
       stack.push(root);
       while (!stack.isEmpty()) {
         TreeNode node = stack.pop();

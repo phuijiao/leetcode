@@ -54,14 +54,14 @@ class Solution {
       int i = 0, j = height.length - 1;
       while (i < j) {
         if (height[i] < height[j]) {
-          if (height[i] > leftMax) {
+          if (height[i] >= leftMax) {
             leftMax = height[i];
           } else {
             res += leftMax - height[i];
           }
           i++;
         } else {
-          if (height[j] > rightMax) {
+          if (height[j] >= rightMax) {
             rightMax = height[j];
           } else {
             res += rightMax - height[j];

@@ -64,23 +64,23 @@ class Solution {
       if (root == null) {
         return new ArrayList<>();
       }
-      LinkedList<TreeNode> list = new LinkedList<>();
-      list.add(root);
+      LinkedList<TreeNode> queue = new LinkedList<>();
+      queue.add(root);
       List<List<Integer>> res = new ArrayList<>();
-      while (!list.isEmpty()) {
-        ArrayList<Integer> curList = new ArrayList<>();
-        int size = list.size();
+      while (!queue.isEmpty()) {
+        ArrayList<Integer> list = new ArrayList<>();
+        int size = queue.size();
         for (int i = 0; i < size; i++) {
-          TreeNode node = list.remove();
-          curList.add(node.val);
+          TreeNode node = queue.remove();
+          list.add(node.val);
           if (node.left != null) {
-            list.add(node.left);
+            queue.add(node.left);
           }
           if (node.right != null) {
-            list.add(node.right);
+            queue.add(node.right);
           }
         }
-        res.add(curList);
+        res.add(list);
       }
       return res;
     }

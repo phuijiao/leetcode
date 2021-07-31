@@ -64,6 +64,7 @@
 
 package leetcode.editor.cn;
 
+import java.util.LinkedList;
 import java.util.Stack;
 
 /**
@@ -80,12 +81,12 @@ class ImplementQueueUsingStacks{
   private static
   //leetcode submit region begin(Prohibit modification and deletion)
 class MyQueue {
-    Stack<Integer> pushStack;
-    Stack<Integer> popStack;
+    LinkedList<Integer> pushStack;
+    LinkedList<Integer> popStack;
     /** Initialize your data structure here. */
     public MyQueue() {
-      pushStack = new Stack<>();
-      popStack = new Stack<>();
+      pushStack = new LinkedList<>();
+      popStack = new LinkedList<>();
     }
     
     /** Push element x to the back of queue. */
@@ -115,7 +116,7 @@ class MyQueue {
     
     /** Returns whether the queue is empty. */
     public boolean empty() {
-      return pushStack.isEmpty() && popStack.empty();
+      return pushStack.isEmpty() && popStack.isEmpty();
     }
 }
 

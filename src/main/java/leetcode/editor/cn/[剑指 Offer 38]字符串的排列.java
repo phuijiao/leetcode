@@ -46,7 +46,7 @@ class ZiFuChuanDePaiLieLcof {
     public String[] permutation(String s) {
       chars = s.toCharArray();
       dfs(0);
-      return list.toArray(new String[list.size()]);
+      return list.toArray(new String[0]);
     }
 
     private void dfs(int x) {

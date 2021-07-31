@@ -102,12 +102,11 @@ class LinkedListCycleIi{
       }
       ListNode slow = head, fast = head;
       while (fast != null) {
-        slow = slow.next;
-        if (fast.next != null) {
-          fast = fast.next.next;
-        } else {
+        if (fast.next == null) {
           return null;
         }
+        slow = slow.next;
+        fast = fast.next.next;
         if (slow == fast) {
           ListNode ptr = head;
           while (ptr != slow) {
