@@ -65,7 +65,7 @@ class SwapNodesInPairs {
   private static
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public ListNode swapPairs(ListNode head) {
+    public ListNode swapPairs1(ListNode head) {
       ListNode root = new ListNode(0, head);
       ListNode tmp = root;
       ListNode t;
@@ -75,6 +75,22 @@ class Solution {
         t.next = tmp.next;
         tmp.next = t;
         tmp = tmp.next.next;
+      }
+      return root.next;
+    }
+
+    // 1  3 4 -> 1 3 2 4
+    public ListNode swapPairs(ListNode head) {
+      ListNode root = new ListNode(0, head);
+      ListNode t1 = root;
+      ListNode t2 = t1.next;
+      while (t2 != null && t2.next != null) {
+        t1.next = t2.next;
+        t1 = t1.next;
+        t2.next = t1.next;
+        t1.next = t2;
+        t1 = t2;
+        t2 = t2.next;
       }
       return root.next;
     }

@@ -119,7 +119,7 @@ class Solution {
       if (len == 1) {
         return lists[0];
       }
-      PriorityQueue<ListNode> queue = new PriorityQueue<>((x, y) -> x.val - y.val);
+      PriorityQueue<ListNode> queue = new PriorityQueue<>();
       for (int i = 0; i < len; i++) {
         if (lists[i] != null) {
           queue.add(lists[i]);

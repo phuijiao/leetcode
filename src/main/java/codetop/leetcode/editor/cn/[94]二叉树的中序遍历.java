@@ -1,4 +1,5 @@
-//给你二叉树的根节点 root ，返回它节点值的 前序 遍历。 
+
+//给定一个二叉树的根节点 root ，返回它的 中序 遍历。 
 //
 // 
 //
@@ -6,7 +7,7 @@
 //
 // 
 //输入：root = [1,null,2,3]
-//输出：[1,2,3]
+//输出：[1,3,2]
 // 
 //
 // 示例 2： 
@@ -27,7 +28,7 @@
 //
 // 
 //输入：root = [1,2]
-//输出：[1,2]
+//输出：[2,1]
 // 
 //
 // 示例 5： 
@@ -48,23 +49,22 @@
 //
 // 
 //
-// 进阶：递归算法很简单，你可以通过迭代算法完成吗？ 
-// Related Topics 栈 树 
-// 👍 547 👎 0
+// 进阶: 递归算法很简单，你可以通过迭代算法完成吗？ 
+// Related Topics 栈 树 深度优先搜索 二叉树 
+// 👍 1053 👎 0
 
-package leetcode.editor.cn;
+package codetop.leetcode.editor.cn;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
- * @author  phuijiao
- * @date 2021-03-27 15:12:24
- */
+  * @author  phuijiao
+  * @date 2021-08-09 22:13:05
+  */
 
-class BinaryTreePreorderTraversal{
+class BinaryTreeInorderTraversal {
   public static void main(String[] args) {
     Solution solution = new Solution();
         
@@ -86,41 +86,42 @@ class BinaryTreePreorderTraversal{
   }
 
   private static
-  //leetcode submit region begin(Prohibit modification and deletion)
-
+//leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public List<Integer> preorderTraversal1(TreeNode root) {
-      ArrayList<Integer> res = new ArrayList<>();
-      if (root == null) {
-        return res;
-      }
-      LinkedList<TreeNode> stack = new LinkedList<>();
-      stack.push(root);
-      while (!stack.isEmpty()) {
-        TreeNode node = stack.pop();
-        res.add(node.val);
-        if (node.right != null) {
-          stack.push(node.right);
-        }
-        if (node.left != null) {
-          stack.push(node.left);
-        }
-      }
+    //递归
+    List<Integer> res;
+    public List<Integer> inorderTraversal1(TreeNode root) {
+      res = new ArrayList<>();
+      dfs(root);
       return res;
     }
 
-    ArrayList<Integer> res = new ArrayList<>();
-    public List<Integer> preorderTraversal(TreeNode root) {
+    private void dfs(TreeNode root) {
       if (root == null) {
-        return res;
+        return;
       }
+      dfs(root.left);
       res.add(root.val);
-      preorderTraversal(root.left);
-      preorderTraversal(root.right);
+      dfs(root.right);
+    }
+
+
+    //迭代法
+    public List<Integer> inorderTraversal(TreeNode root) {
+      res = new ArrayList<>();
+      LinkedList<TreeNode> stock = new LinkedList<>();
+      while (root != null || !stock.isEmpty()) {
+        while (root != null) {
+          stock.add(root);
+          root = root.left;
+        }
+        root = stock.pollLast();
+        res.add(root.val);
+        root = root.right;
+      }
       return res;
     }
-}
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
-

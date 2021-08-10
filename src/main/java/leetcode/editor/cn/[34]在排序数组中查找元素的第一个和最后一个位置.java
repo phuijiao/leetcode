@@ -56,7 +56,7 @@ class FindFirstAndLastPositionOfElementInSortedArray {
   private static
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int[] searchRange(int[] nums, int target) {
+    public int[] searchRange1(int[] nums, int target) {
       if (nums == null || nums.length == 0) {
         return new int[]{-1, -1};
       }
@@ -82,7 +82,31 @@ class Solution {
       }
       return new int[]{-1, -1};
     }
-}
+
+
+    public int[] searchRange(int[] nums, int target) {
+      int left = binarySearch(nums, target, true);
+      int right = binarySearch(nums, target, false) - 1;
+      if (left <= right && right < nums.length && nums[left] == target && nums[right] == target) {
+        return new int[]{left, right};
+      }
+      return new int[]{-1, -1};
+    }
+
+    private int binarySearch(int[] nums, int target, boolean lower) {
+      int l = 0, r = nums.length - 1, m, res = nums.length;
+      while (l <= r) {
+        m = (l + r) >> 1;
+        if (nums[m] > target || (lower && nums[m] == target)) {
+          r = m - 1;
+          res = m;
+        } else {
+          l = m + 1;
+        }
+      }
+      return res;
+    }
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

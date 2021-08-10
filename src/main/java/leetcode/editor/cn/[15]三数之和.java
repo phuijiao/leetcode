@@ -102,9 +102,9 @@ class Solution {
           continue;
         }
         int left = i + 1, right = len - 1;
-        int target = -nums[i];
+
         while (left < right) {
-          if (nums[left] + nums[right] == target) {
+          if (nums[i] + nums[left] + nums[right] == 0) {
             res.add(Arrays.asList(nums[i], nums[left], nums[right]));
             left++;
             right--;
@@ -114,7 +114,7 @@ class Solution {
             while (left < right && nums[right] == nums[right + 1]) {
               right--;
             }
-          } else if (nums[left] + nums[right] < target) {
+          } else if (nums[i] + nums[left] + nums[right]< 0) {
             left++;
           } else {
             right--;

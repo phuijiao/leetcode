@@ -127,30 +127,30 @@ class StringToIntegerAtoi{
   //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int myAtoi(String s) {
-      String s1 = s.trim();
       long ans = 0;
       long flag = 1;
-      int len = s1.length();
-      if (len == 0) {
+      int ind = 0;
+      int len = s.length();
+      while (ind < len && s.charAt(ind) == ' ') {
+        ind++;
+      }
+      if (ind == len) {
         return 0;
       }
-      int ind = 0;
-      char ch = s1.charAt(0);
+
+      char ch = s.charAt(ind);
       if (ch == '+') {
-        ind = 1;
+        ind++;
       } else if (ch == '-') {
-        ind = 1;
+        ind++;
         flag = -1;
-      } else if (ch < '0' || ch > '9') {
-        return 0;
       }
       for (; ind < len; ind++) {
-        char c = s1.charAt(ind);
+        char c = s.charAt(ind);
         if (c < '0' || c > '9') {
           break;
         }
-        ans *= 10;
-        ans += flag * (c - '0');
+        ans = ans * 10 + flag * (c - '0');
 
         if (ans >= Integer.MAX_VALUE) {
           return Integer.MAX_VALUE;

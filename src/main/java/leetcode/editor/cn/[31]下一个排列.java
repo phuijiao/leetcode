@@ -63,6 +63,7 @@ class NextPermutation {
   private static
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    // 3 2 1
     public void nextPermutation(int[] nums) {
       if (nums == null || nums.length == 1) {
         return;

@@ -1,10 +1,11 @@
+
 //将两个升序链表合并为一个新的 升序 链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 //
 // 
 //
 // 示例 1： 
 //
-//
+// 
 //输入：l1 = [1,2,4], l2 = [1,3,4]
 //输出：[1,1,2,3,4,4]
 // 
@@ -33,21 +34,22 @@
 // l1 和 l2 均按 非递减顺序 排列 
 // 
 // Related Topics 递归 链表 
-// 👍 1606 👎 0
+// 👍 1832 👎 0
 
-package leetcode.editor.cn;
+package codetop.leetcode.editor.cn;
  /**
- * @author  phuijiao
- * @date 2021-03-19 16:46:11
- */
+  * @author  phuijiao
+  * @date 2021-08-08 17:32:58
+  */
 
-class MergeTwoSortedLists{
+class MergeTwoSortedLists {
   public static void main(String[] args) {
     Solution solution = new Solution();
         
   }
 
 
+//  Definition for singly-linked list.
   private static class ListNode {
       int val;
       ListNode next;
@@ -57,14 +59,13 @@ class MergeTwoSortedLists{
   }
 
   private static
-  //leetcode submit region begin(Prohibit modification and deletion)
-
+//leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-      ListNode head = new ListNode();
+      ListNode head = new ListNode(0);
       ListNode tmp = head;
       while (l1 != null && l2 != null) {
-        if (l1.val <= l2.val) {
+        if (l1.val < l2.val) {
           tmp.next = l1;
           l1 = l1.next;
         } else {
@@ -73,16 +74,10 @@ class Solution {
         }
         tmp = tmp.next;
       }
-      if (l1 != null) {
-        tmp.next = l1;
-      }
-      if (l2 != null) {
-        tmp.next = l2;
-      }
+      tmp.next = l1 != null ? l1 : l2;
       return head.next;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
-
