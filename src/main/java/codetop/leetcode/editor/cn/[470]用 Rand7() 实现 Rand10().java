@@ -56,29 +56,29 @@ package codetop.leetcode.editor.cn;
  */
  
 class ImplementRand10UsingRand7 {
-  public static void main(String[] args) {
-    Solution solution = new Solution();
-    
-  }
-  
-  private static
+//  public static void main(String[] args) {
+//    Solution solution = new Solution();
+//
+//  }
+//
+//  private static
 //leetcode submit region begin(Prohibit modification and deletion)
 /**
  * The rand7() API is already defined in the parent class SolBase.
  * public int rand7();
  * @return a random integer in the range 1 to 7
  */
-class Solution extends SolBase {
-    public int rand10() {
-        int a, b, idx;
-        do {
-            a = rand7();
-            b = rand7();
-            idx = (a - 1) * 7 + b;
-        } while (idx > 40);
-        return 1 + (idx - 1) % 10;
-    }
-}
+//class Solution extends SolBase {
+//    public int rand10() {
+//        int a, b, idx;
+//        do {
+//            a = rand7();
+//            b = rand7();
+//            idx = (a - 1) * 7 + b;
+//        } while (idx > 40);
+//        return 1 + (idx - 1) % 10;
+//    }
+//}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
