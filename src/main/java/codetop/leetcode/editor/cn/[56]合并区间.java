@@ -34,6 +34,7 @@
 package codetop.leetcode.editor.cn;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
 
 /**
@@ -50,7 +51,7 @@ class MergeIntervals {
   private static
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
-    public int[][] merge(int[][] intervals) {
+    public int[][] merge1(int[][] intervals) {
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
         PriorityQueue<int[]> queue = new PriorityQueue<>((a, b) -> b[1] - a[1]);
         queue.add(intervals[0]);
@@ -65,6 +66,24 @@ class Solution {
 
         }
         return queue.toArray(new int[0][0]);
+    }
+
+    //不需要使用优先队列
+    public int[][] merge(int[][] intervals) {
+      Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+      LinkedList<int[]> queue = new LinkedList<>();
+      queue.add(intervals[0]);
+      for (int i = 1; i < intervals.length; i++) {
+        if (queue.peekLast()[1] < intervals[i][0]) {
+          queue.add(intervals[i]);
+        } else if (queue.peekLast()[1] < intervals[i][1]) {
+          int[] poll = queue.pollLast();
+          intervals[i][0] = poll[0];
+          queue.add(intervals[i]);
+        }
+
+      }
+      return queue.toArray(new int[0][0]);
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

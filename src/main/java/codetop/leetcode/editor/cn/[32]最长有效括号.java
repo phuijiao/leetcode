@@ -55,7 +55,8 @@ import java.util.LinkedList;
 class LongestValidParentheses {
   public static void main(String[] args) {
     Solution solution = new Solution();
-        
+    int cnt = solution.longestValidParentheses("()");
+    System.out.println(cnt);
   }
    
   private static

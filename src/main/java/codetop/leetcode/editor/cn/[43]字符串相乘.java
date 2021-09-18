@@ -56,15 +56,12 @@ class Solution {
       }
       StringBuilder builder = new StringBuilder();
       int ind = 0;
-      while (ind < l1 + l2 && nums[ind] == 0) {
+      while (ind < l1 + l2 - 1 && nums[ind] == 0) {
         ind++;
       }
       while (ind < l1 + l2) {
         builder.append(nums[ind]);
         ind++;
-      }
-      if (builder.length() == 0) {
-        builder.append(0);
       }
       return builder.toString();
     }

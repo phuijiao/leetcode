@@ -25,34 +25,35 @@
 // 👍 508 👎 0
 
 package codetop.leetcode.editor.cn;
+
 /**
  * @Author phuijiao
  * @date 2021-08-13 16:04:21
  */
- 
+
 class MaximumLengthOfRepeatedSubarray {
   public static void main(String[] args) {
     Solution solution = new Solution();
 
   }
-  
+
   private static
 //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
+  class Solution {
     public int findLength(int[] nums1, int[] nums2) {
-        int l1 = nums1.length;
-        int l2 = nums2.length;
-        int[][] dp = new int[l1 + 1][l2 + 1];
-        int res = 0;
-        for (int i = l1 - 1; i >= 0; i--) {
-            for (int j = l2 - 1; j >= 0; j--) {
-                dp[i][j] = nums1[i] == nums2[j] ? dp[i + 1][j + 1] + 1 : 0;
-                res = Math.max(res, dp[i][j]);
-            }
+      int l1 = nums1.length;
+      int l2 = nums2.length;
+      int[][] dp = new int[l1 + 1][l2 + 1];
+      int res = 0;
+      for (int i = 1; i <= l1; i++) {
+        for (int j = 1; j <= l2; j++) {
+          dp[i][j] = nums1[i - 1] == nums2[j - 1] ? dp[i - 1][j - 1] + 1 : 0;
+          res = Math.max(res, dp[i][j]);
         }
-        return res;
+      }
+      return res;
     }
-}
+  }
 //leetcode submit region end(Prohibit modification and deletion)
 
 }

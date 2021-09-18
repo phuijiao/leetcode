@@ -95,9 +95,7 @@ class Solution {
             while (!queue.isEmpty() && queue.peekLast() < nums[i]) {
                 queue.pollLast();
             }
-            if (queue.isEmpty() || nums[i] <= queue.peekLast()) {
-                queue.add(nums[i]);
-            }
+            queue.add(nums[i]);
             if (++ind >= k) {
                 res[i - k + 1] = queue.peekFirst();
             }

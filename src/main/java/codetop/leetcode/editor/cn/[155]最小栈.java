@@ -76,7 +76,7 @@ class MinStack {
     
     public void pop() {
         Integer pop = stack.pop();
-        if (pop <= min.peek()) {
+        if (pop.equals(min.peek())) {
             min.pop();
         }
     }

@@ -84,7 +84,7 @@ class ValidateIpAddress {
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public String validIPAddress(String IP) {
-      if (IP == null || IP.length() < 7) {
+      if (IP == null || IP.length() < 7 || IP.length() > 39) {
         return "Neither";
       }
       if (IP.contains(".")) {

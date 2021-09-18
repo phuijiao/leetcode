@@ -80,7 +80,7 @@ class Solution {
                 }
             }
         }
-        sort(nums, 0, len -1);
+        reverse(nums, 0, len - 1);
     }
 
       private void reverse(int[] nums, int i, int j) {
@@ -94,26 +94,6 @@ class Solution {
           }
       }
 
-      private void sort(int[] nums, int start, int end) {
-          if (start >= end) {
-              return;
-          }
-          int tmp = nums[start];
-          int i = start, j = end;
-          while (i < j) {
-              while (i < j && tmp <= nums[j]) {
-                  j--;
-              }
-              nums[i] = nums[j];
-              while (i < j && nums[i] <= tmp) {
-                  i++;
-              }
-              nums[j] = nums[i];
-          }
-          nums[i] = tmp;
-          sort(nums, start, i - 1);
-          sort(nums, i + 1, end);
-      }
   }
 //leetcode submit region end(Prohibit modification and deletion)
 

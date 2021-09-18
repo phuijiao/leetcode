@@ -79,7 +79,7 @@ class PathSumIi {
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     List<List<Integer>> res;
-    LinkedList<TreeNode> list;
+    LinkedList<Integer> list;
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         res = new ArrayList<>();
         if (root == null) {
@@ -92,10 +92,10 @@ class Solution {
     }
 
       private void path(TreeNode root, int targetSum) {
-          list.add(root);
+          list.add(root.val);
           targetSum -= root.val;
           if (root.left == null && root.right == null && targetSum == 0) {
-              res.add(list.stream().map(o -> Integer.valueOf(o.val)).collect(Collectors.toList()));
+              res.add(new LinkedList<>(list));
           }
           if (root.left != null) {
               path(root.left, targetSum);

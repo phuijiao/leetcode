@@ -82,6 +82,7 @@ class Solution {
           }
           res.add(ints);
           l++;
+          r++;
         } else if (sum > target) {
           l++;
         } else {
